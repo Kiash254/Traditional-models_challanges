@@ -1,5 +1,12 @@
 function submitQuiz() {
-    // Send responses to the server as JSON
+    const form = document.getElementById('predictionForm');
+    const formData = new FormData(form);
+    const responses = {};
+
+    formData.forEach((value, key) => {
+        responses[key] = value;
+    });
+
     fetch('/predict', {
         method: 'POST',
         headers: {
@@ -8,11 +15,11 @@ function submitQuiz() {
         body: JSON.stringify(responses)
     }).then(response => {
         if (response.ok) {
-            // Successful response (status code 200-299)
             response.json().then(data => {
                 const prediction = data.prediction;
-                predictionResult(prediction);
-                });
+                console.log('Prediction:', prediction);
+                alert('Prediction: ' + prediction);
+            });
         } else {
             alert('Error submitting survey.');
         }

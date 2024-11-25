@@ -4,11 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
-
-<script src="{{ url_for('static', filename='script.js') }}"></script>
+    <form id="predictionForm">
+        <label for="feature1">Feature 1:</label>
+        <input type="text" id="feature1" name="feature1"><br><br>
+        <label for="feature2">Feature 2:</label>
+        <input type="text" id="feature2" name="feature2"><br><br>
+        <!-- Add more input fields as needed -->
+        <button type="button" onclick="submitQuiz()">Submit</button>
+    </form>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
